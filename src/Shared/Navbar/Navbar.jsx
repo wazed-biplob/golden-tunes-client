@@ -51,7 +51,9 @@ const Navbar = () => {
         <div className="navbar-end flex gap-4">
           <button className="btn btn-xs btn-secondary">Login</button>
           <button className="btn btn-xs btn-secondary">Log Out</button>
-          <button className="btn btn-xs btn-secondary">Sign Up</button>
+          <Link to="/registration">
+            <button className="btn btn-xs btn-secondary">Sign Up</button>
+          </Link>
           <img className="" alt="" />
         </div>
       </div>

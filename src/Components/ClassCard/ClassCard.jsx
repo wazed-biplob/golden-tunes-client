@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line react/prop-types
 const ClassCard = ({ singleClass }) => {
-  console.log(singleClass);
   const {
     className,
     status,
