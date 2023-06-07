@@ -56,6 +56,7 @@ const Registration = () => {
       })
       .catch((error) => {
         console.log(error);
+        alert(error.message);
       });
   };
   return (
@@ -143,7 +144,9 @@ const Registration = () => {
                 <label className="label">
                   <span className="label-text-alt">
                     Already Registered? Sign In{" "}
-                    <Link style={{ color: "blue" }}>Here</Link>
+                    <Link to="/login" style={{ color: "blue" }}>
+                      Here
+                    </Link>
                   </span>
                 </label>
               </div>

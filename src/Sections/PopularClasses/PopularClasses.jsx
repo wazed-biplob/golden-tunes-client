@@ -4,7 +4,7 @@ import SectionHeading from "../../Components/SectionHeading/SectionHeading";
 
 const PopularClasses = () => {
   const [classes, setClasses] = useState([]);
-  console.log(classes);
+
   useEffect(() => {
     fetch(`http://localhost:5000/classes`)
       .then((res) => res.json())

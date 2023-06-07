@@ -1,6 +1,20 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProviders";
+import { getAuth } from "firebase/auth";
+import app from "../../Firebase/firebase.config";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const auth = getAuth(app);
+  const signOut = () => {
+    logOut(auth)
+      .then(() => {})
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  console.log(user);
   const navLinks = (
     <>
       {" "}
@@ -12,6 +26,9 @@ const Navbar = () => {
       </li>
       <li>
         <a>Classes</a>
+      </li>{" "}
+      <li>
+        <Link to="/dashboard">DashBoard</Link>
       </li>{" "}
     </>
   );
@@ -49,14 +66,28 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
         <div className="navbar-end flex gap-4">
-          <Link to="/login">
-            <button className="btn btn-xs btn-secondary">Sign in</button>
-          </Link>
-          <button className="btn btn-xs btn-secondary">Log Out</button>
-          <Link to="/registration">
-            <button className="btn btn-xs btn-secondary">Sign Up</button>
-          </Link>
-          <img className="" alt="" />
+          {user ? (
+            <>
+              <img
+                style={{ width: "40px", height: "40px", borderRadius: "50%" }}
+                src={user?.photoURL}
+                alt={user?.displayName}
+              />
+              <button onClick={signOut} className="btn btn-xs btn-secondary">
+                Log Out
+              </button>{" "}
+            </>
+          ) : (
+            <>
+              {" "}
+              <Link to="/login">
+                <button className="btn btn-xs btn-secondary">Sign in</button>
+              </Link>
+              <Link to="/registration">
+                <button className="btn btn-xs btn-secondary">Sign Up</button>
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </>

@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Providers/AuthProviders";
-import { useNavigate } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+// TODO : HIDE/UNHIDE PASS
 const Login = () => {
   const { signIn } = useContext(AuthContext);
   const from = location.state?.from.pathname || "/";
@@ -63,7 +63,14 @@ const Login = () => {
                   <p role="alert">Error : Less than 20 char required</p>
                 )}
               </div>
-
+              <label className="label">
+                <span className="label-text-alt">
+                  Don't have and Account? Sign Up{" "}
+                  <Link to="/registration" style={{ color: "blue" }}>
+                    Here
+                  </Link>
+                </span>
+              </label>
               <div className="form-control mt-6">
                 <button className="btn btn-glass">Sign In</button>
               </div>
