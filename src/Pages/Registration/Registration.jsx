@@ -1,16 +1,18 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { getAuth, updateProfile } from "firebase/auth";
 import app from "../../Firebase/firebase.config";
 
 const Registration = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, logOut } = useContext(AuthContext);
   const auth = getAuth(app);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -44,6 +46,13 @@ const Registration = () => {
               }
             });
         });
+
+        logOut()
+          .then(() => {})
+          .catch((error) => console.log(error));
+
+        reset();
+        navigate("/login");
       })
       .catch((error) => {
         console.log(error);

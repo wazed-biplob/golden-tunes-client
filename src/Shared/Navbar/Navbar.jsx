@@ -49,7 +49,9 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
         <div className="navbar-end flex gap-4">
-          <button className="btn btn-xs btn-secondary">Login</button>
+          <Link to="/login">
+            <button className="btn btn-xs btn-secondary">Sign in</button>
+          </Link>
           <button className="btn btn-xs btn-secondary">Log Out</button>
           <Link to="/registration">
             <button className="btn btn-xs btn-secondary">Sign Up</button>
