@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 import "./Slider.css";
-
+// TODO : 2 more slider pictures are to be added
 // import required modules
 import { Navigation } from "swiper";
 
