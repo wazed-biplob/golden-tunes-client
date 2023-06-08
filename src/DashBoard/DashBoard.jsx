@@ -1,6 +1,7 @@
-import React from "react";
+import { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import useUserRole from "../Hooks/useUserRole";
+import { AuthContext } from "../Providers/AuthProviders";
 
 const DashBoard = () => {
   const [userRole] = useUserRole();
@@ -23,15 +24,15 @@ const DashBoard = () => {
           <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
             {/* Sidebar content here */}
             <li>
-              <Link>Admin Home</Link>
+              <Link to="adminhome">Admin Home</Link>
             </li>
             <div className="divider"></div>
             <li>
-              <Link>Manage Classes</Link>
+              <Link to="manageclasses">Manage Classes</Link>
             </li>
 
             <li>
-              <Link to="allusers">Manage Users</Link>
+              <Link to="manageusers">Manage Users</Link>
             </li>
           </ul>
         </div>

@@ -26,10 +26,12 @@ const Navbar = () => {
       </li>
       <li>
         <a>Classes</a>
-      </li>{" "}
-      <li>
-        <Link to="/dashboard">DashBoard</Link>
-      </li>{" "}
+      </li>
+      {user && (
+        <li>
+          <Link to="/dashboard">DashBoard</Link>
+        </li>
+      )}
     </>
   );
   return (
