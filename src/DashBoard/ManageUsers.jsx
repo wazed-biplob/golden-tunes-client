@@ -1,8 +1,9 @@
+import { useState } from "react";
 import useUsers from "../Hooks/useUser";
 
 const ManageUsers = () => {
   const [users] = useUsers();
-  console.log(users);
+
   return (
     <>
       <div className="overflow-x-auto">
@@ -13,12 +14,13 @@ const ManageUsers = () => {
               <th>#</th>
               <th>User Picture and Name </th>
               <th>User Email</th>
+              <th>User Role</th>
               <th>Make Instructor</th>
               <th>Make Admin</th>
             </tr>
           </thead>
           <tbody>
-            {users.map((user, i) => (
+            {users?.map((user, i) => (
               <>
                 <tr>
                   <th>
@@ -42,18 +44,25 @@ const ManageUsers = () => {
                       </div>
                     </div>
                   </td>
-                  <td>
-                    {user.email}
-
-                    <span className="badge badge-ghost badge-sm"></span>
-                  </td>
+                  <td>{user.email}</td>
+                  <td>{user.role}</td>
                   <th>
-                    <button className="btn btn-primary btn-xs">
-                      Instructor
-                    </button>
+                    {
+                      <button
+                        disabled={user?.role === "instructor"}
+                        className="btn btn-primary btn-xs"
+                      >
+                        Make Instructor
+                      </button>
+                    }
                   </th>
                   <th>
-                    <button className="btn btn-secondary btn-xs">Admin</button>
+                    <button
+                      disabled={user?.role === "admin"}
+                      className="btn btn-secondary btn-xs"
+                    >
+                      Make Admin
+                    </button>
                   </th>
                 </tr>
               </>
