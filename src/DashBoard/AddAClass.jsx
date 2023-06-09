@@ -1,8 +1,46 @@
-import React from "react";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProviders";
 
 const AddAClass = () => {
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
   const handleAddAClass = (e) => {
-    console.log(e);
+    e.preventDefault();
+    const form = e.target;
+    const className = form.class_name.value;
+    const image = form.pictureURL.value;
+    const instructorName = form.name.value;
+    const instructorEmail = form.email.value;
+
+    const price = form.price.value;
+    const seats = form.seats.value;
+    const classInfo = {
+      availableSeats: seats,
+      className: className,
+      feedback: "",
+      image: image,
+      instructorEmail: instructorEmail,
+      instructorName: instructorName,
+      price: price,
+      status: "pending",
+      totalEnrolledStudents: 0,
+    };
+    console.log(classInfo);
+    fetch("http://localhost:5000/add-class", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(classInfo),
+    })
+      .then((r) => r.json())
+      .then((d) => {
+        if (d.insertedId) {
+          alert("Class Has Been Added Successfully.");
+          navigate("dashboard/myclasses");
+        }
+      });
   };
   return (
     <div>
@@ -25,9 +63,9 @@ const AddAClass = () => {
             </label>
             <input
               type="text"
-              placeholder="Toy Name"
+              placeholder="Class Name"
               className="input input-bordered"
-              name="classname"
+              name="class_name"
             />
           </div>
 
@@ -48,7 +86,7 @@ const AddAClass = () => {
             </label>
             <input
               type="email"
-              placeholder="Your Email"
+              placeholder={user?.email}
               className="input input-bordered"
               name="email"
               disabled
@@ -72,7 +110,7 @@ const AddAClass = () => {
             </label>
             <input
               type="number"
-              placeholder="Rating"
+              placeholder="Price to Enroll"
               className="input input-bordered"
               name="price"
             />
