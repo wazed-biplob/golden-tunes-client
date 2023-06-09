@@ -10,6 +10,7 @@ import ManageClasses from "../DashBoard/ManageClasses";
 import ManageUsers from "../DashBoard/ManageUsers";
 import AdminHome from "../DashBoard/AdminHome";
 import AdminRoutes from "./AdminRoutes";
+import AddAClass from "../DashBoard/AddAClass";
 
 export const router = createBrowserRouter([
   {
@@ -49,6 +50,7 @@ export const router = createBrowserRouter([
         path: "manageusers",
         element: <ManageUsers />,
       },
+      { path: "addaclass", element: <AddAClass /> },
     ],
   },
 ]);

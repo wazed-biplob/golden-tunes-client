@@ -30,10 +30,10 @@ const DashBoard = () => {
           </li>
           <div className="divider"></div>
           <li>
-            <Link to="manageclasses">Manage Classes</Link>
+            <Link to="addaclass">Add A Class</Link>
           </li>
           <li>
-            <Link to="manageusers">Manage Users</Link>
+            <Link to="myclasses">My Classes</Link>
           </li>
         </>
       ) : (
