@@ -26,7 +26,7 @@ const DashBoard = () => {
         <>
           <li>
             <Link to="/">Home</Link>
-            <Link to="adminhome">Instructor DashBoard</Link>
+            <Link to="main">Instructor DashBoard</Link>
           </li>
           <div className="divider"></div>
           <li>

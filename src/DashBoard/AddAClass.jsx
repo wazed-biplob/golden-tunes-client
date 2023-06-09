@@ -10,8 +10,8 @@ const AddAClass = () => {
     const form = e.target;
     const className = form.class_name.value;
     const image = form.pictureURL.value;
-    const instructorName = form.name.value;
-    const instructorEmail = form.email.value;
+    const instructorName = user?.displayName;
+    const instructorEmail = user?.email;
 
     const price = form.price.value;
     const seats = form.seats.value;
@@ -38,7 +38,7 @@ const AddAClass = () => {
       .then((d) => {
         if (d.insertedId) {
           alert("Class Has Been Added Successfully.");
-          navigate("dashboard/myclasses");
+          form.reset();
         }
       });
   };
@@ -75,9 +75,10 @@ const AddAClass = () => {
             </label>
             <input
               type="text"
-              placeholder="Full Name"
+              placeholder={user?.displayName}
               className="input input-bordered"
               name="name"
+              disabled
             />
           </div>
           <div className="form-control">
