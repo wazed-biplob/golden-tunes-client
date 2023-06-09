@@ -5,6 +5,7 @@ import { AuthContext } from "../Providers/AuthProviders";
 
 const DashBoard = () => {
   const [userRole] = useUserRole();
+  const { user } = useContext(AuthContext);
   const dashboardLinks = (
     <>
       {userRole === "admin" ? (
@@ -12,7 +13,6 @@ const DashBoard = () => {
           {" "}
           <li>
             <Link to="/">Home</Link>
-            <Link to="adminhome">Admin Home</Link>
           </li>
           <div className="divider"></div>
           <li>
@@ -26,7 +26,6 @@ const DashBoard = () => {
         <>
           <li>
             <Link to="/">Home</Link>
-            <Link to="main">Instructor DashBoard</Link>
           </li>
           <div className="divider"></div>
           <li>
@@ -40,14 +39,13 @@ const DashBoard = () => {
         <>
           <li>
             <Link to="/">Home</Link>
-            <Link to="adminhome">User Home</Link>
           </li>
           <div className="divider"></div>
           <li>
-            <Link to="manageclasses">Manage Classes</Link>
+            <Link to="selected-classes">My Selected Classes</Link>
           </li>
           <li>
-            <Link to="manageusers">Manage Users</Link>
+            <Link to="enrolled-classes">My Enrolled Classes</Link>
           </li>
         </>
       )}
@@ -58,6 +56,7 @@ const DashBoard = () => {
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col items-center justify-center">
+          <h1>Welcome {user?.displayName}</h1>
           <Outlet />
           <label
             htmlFor="my-drawer-2"

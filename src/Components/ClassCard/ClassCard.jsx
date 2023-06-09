@@ -3,6 +3,7 @@
 const ClassCard = ({ singleClass }) => {
   const {
     className,
+    image,
     status,
     feedback,
     instructorName,
@@ -13,15 +14,23 @@ const ClassCard = ({ singleClass }) => {
     <div>
       <div className="card w-96 bg-base-100 shadow-xl">
         <figure>
-          {/* <img
-            src=""
-            alt="Shoes"
-          /> */}
+          <img src={image} alt="Shoes" />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">
-            {instructorName}
-            <div className="badge badge-primary">{className}</div>
+          <h2 className="card-title font-extrabold">
+            {className}
+            <div
+              style={{
+                height: "fit-content",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                fontSize: "12px",
+              }}
+              className="font-bold text-gray-500"
+            >
+              {instructorName}
+            </div>
           </h2>
           <p>{feedback}</p>
           <div className="card-actions justify-end">
