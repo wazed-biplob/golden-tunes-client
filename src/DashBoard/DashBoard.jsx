@@ -5,7 +5,54 @@ import { AuthContext } from "../Providers/AuthProviders";
 
 const DashBoard = () => {
   const [userRole] = useUserRole();
-
+  const dashboardLinks = (
+    <>
+      {userRole === "admin" ? (
+        <>
+          {" "}
+          <li>
+            <Link to="/">Home</Link>
+            <Link to="adminhome">Admin Home</Link>
+          </li>
+          <div className="divider"></div>
+          <li>
+            <Link to="manageclasses">Manage Classes</Link>
+          </li>
+          <li>
+            <Link to="manageusers">Manage Users</Link>
+          </li>
+        </>
+      ) : userRole === "instructor" ? (
+        <>
+          <li>
+            <Link to="/">Home</Link>
+            <Link to="adminhome">Instructor DashBoard</Link>
+          </li>
+          <div className="divider"></div>
+          <li>
+            <Link to="manageclasses">Manage Classes</Link>
+          </li>
+          <li>
+            <Link to="manageusers">Manage Users</Link>
+          </li>
+        </>
+      ) : (
+        <>
+          <li>
+            <Link to="/">Home</Link>
+            <Link to="adminhome">User Home</Link>
+          </li>
+          <div className="divider"></div>
+          <li>
+            <Link to="manageclasses">Manage Classes</Link>
+          </li>
+          <li>
+            <Link to="manageusers">Manage Users</Link>
+          </li>
+        </>
+      )}
+    </>
+  );
   return (
     <div>
       <div className="drawer lg:drawer-open">
@@ -23,17 +70,7 @@ const DashBoard = () => {
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
             {/* Sidebar content here */}
-            <li>
-              <Link to="adminhome">Admin Home</Link>
-            </li>
-            <div className="divider"></div>
-            <li>
-              <Link to="manageclasses">Manage Classes</Link>
-            </li>
-
-            <li>
-              <Link to="manageusers">Manage Users</Link>
-            </li>
+            {dashboardLinks}
           </ul>
         </div>
       </div>

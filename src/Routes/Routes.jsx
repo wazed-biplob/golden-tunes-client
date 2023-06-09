@@ -9,6 +9,7 @@ import PrivateRoute from "./PrivateRoutes";
 import ManageClasses from "../DashBoard/ManageClasses";
 import ManageUsers from "../DashBoard/ManageUsers";
 import AdminHome from "../DashBoard/AdminHome";
+import AdminRoutes from "./AdminRoutes";
 
 export const router = createBrowserRouter([
   {
@@ -32,7 +33,14 @@ export const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
-      { path: "adminhome", element: <AdminHome /> },
+      {
+        path: "adminhome",
+        element: (
+          <AdminRoutes>
+            <AdminHome />
+          </AdminRoutes>
+        ),
+      },
       {
         path: "manageclasses",
         element: <ManageClasses />,

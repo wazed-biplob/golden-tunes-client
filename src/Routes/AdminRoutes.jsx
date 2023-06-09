@@ -2,13 +2,12 @@
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProviders";
 import { Navigate, useLocation } from "react-router-dom";
+import useUserRole from "../Hooks/useUserRole";
 
-const PrivateRoute = ({ children }) => {
+const AdminRoutes = ({ children }) => {
   const location = useLocation();
+  const [userRole] = useUserRole();
   const { user, loading } = useContext(AuthContext);
-  if (user) {
-    return children;
-  }
   if (loading) {
     return (
       <div
@@ -19,7 +18,11 @@ const PrivateRoute = ({ children }) => {
       </div>
     );
   }
-  return <Navigate to="/login" state={{ from: location }}></Navigate>;
+  if (user && userRole === "admin") {
+    return children;
+  }
+
+  return <Navigate to="/" state={{ from: location }}></Navigate>;
 };
 
-export default PrivateRoute;
+export default AdminRoutes;

@@ -1,8 +1,23 @@
-import { useState } from "react";
+import { useContext } from "react";
 import useUsers from "../Hooks/useUser";
+import { AuthContext } from "../Providers/AuthProviders";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const ManageUsers = () => {
-  const [users] = useUsers();
+  const [refetch, users] = useUsers();
+
+  const handleMakeAdmin = () => {};
+  const handleMakeInstructor = (id) => {
+    fetch(`http://localhost:5000/users/instructor/${id}`, {
+      method: "POST",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        refetch();
+      });
+  };
 
   return (
     <>
@@ -49,8 +64,11 @@ const ManageUsers = () => {
                   <th>
                     {
                       <button
-                        disabled={user?.role === "instructor"}
+                        disabled={
+                          user?.role === "instructor" || user?.role === "admin"
+                        }
                         className="btn btn-primary btn-xs"
+                        onClick={() => handleMakeInstructor(user._id)}
                       >
                         Make Instructor
                       </button>
@@ -60,6 +78,7 @@ const ManageUsers = () => {
                     <button
                       disabled={user?.role === "admin"}
                       className="btn btn-secondary btn-xs"
+                      onclick={handleMakeAdmin}
                     >
                       Make Admin
                     </button>
