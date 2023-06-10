@@ -31,6 +31,7 @@ const Registration = () => {
             name: data.name,
             email: data.email,
             role: "student",
+            image: data.photo,
           };
           fetch("http://localhost:5000/users", {
             method: "POST",

@@ -86,10 +86,11 @@ const Login = () => {
                   </Link>
                 </span>
               </label>
-              <div className="form-control mt-6">
+              <div className="form-control mt-2">
                 <button className="btn btn-glass">Sign In</button>
               </div>
             </form>
+            <button className="btn btn-info m-2">Sign in With Google</button>
           </div>
         </div>
       </div>

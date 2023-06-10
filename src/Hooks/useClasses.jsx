@@ -11,7 +11,7 @@ const useClasses = () => {
     queryKey: ["classes"],
     enabled: !loading,
     queryFn: async () => {
-      const response = await AX(`/classes`);
+      const response = await AX(`/all-classes`);
       return response.data;
     },
   });
