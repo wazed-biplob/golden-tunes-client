@@ -1,11 +1,11 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useSelectedClasses from "../Hooks/useSelectedClasses";
-import Checkout from "../Components/Payment/Checkout";
-import Payment from "../Components/Payment/Payment";
+
+// TODO : DELETE FROM CART
 
 const SelectedClasses = () => {
   const [selectedClasses] = useSelectedClasses();
-  if (selectedClasses.length !== 0) {
+  if (selectedClasses?.length !== 0) {
     console.log(selectedClasses);
     return (
       <div>

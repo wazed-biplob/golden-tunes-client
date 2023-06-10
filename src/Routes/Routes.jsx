@@ -16,6 +16,7 @@ import SelectedClasses from "../DashBoard/SelectedClasses";
 import EnrolledClasses from "../DashBoard/EnrolledClasses";
 import Payment from "../Components/Payment/Payment";
 import PaymentHistory from "../Components/Payment/PaymentHistory";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
@@ -69,4 +70,5 @@ export const router = createBrowserRouter([
       { path: "payment-history", element: <PaymentHistory /> },
     ],
   },
+  { path: "*", element: <ErrorPage /> },
 ]);

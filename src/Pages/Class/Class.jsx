@@ -47,7 +47,7 @@ const Class = () => {
           }
         });
     } else {
-      alert("Please, Log in to order the food.");
+      alert("Please, Log in to select the class.");
       navigate("/login", { from: location });
     }
   };

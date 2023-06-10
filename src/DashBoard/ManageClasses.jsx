@@ -3,7 +3,40 @@ import useClasses from "../Hooks/useClasses";
 const ManageClasses = () => {
   const [classes] = useClasses();
   console.log(classes);
-
+  const handleApproveClass = (id) => {
+    fetch(`http://localhost:5000/approve-class/${id}`, { method: "POST" })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          alert("Class has been Approved.");
+        }
+      });
+  };
+  const handleDenyClass = (id) => {
+    fetch(`http://localhost:5000/deny-class/${id}`, { method: "POST" })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          alert("Class Has Been Denied.");
+        }
+      });
+  };
+  const handleFeedback = (id) => {
+    const feedback = prompt("Write Reasons this class is denied for.");
+    fetch(`http://localhost:5000/class-feedback/${id}`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ feedback }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          alert("Feedback Has been recorded.");
+        }
+      });
+  };
   return (
     <>
       <div className="overflow-x-auto">
@@ -56,11 +89,24 @@ const ManageClasses = () => {
                   <td>${singleClass.price}</td>
                   <td>{singleClass.status}</td>
                   <th className="flex gap-2">
-                    <button className="btn btn-secondary btn-xs">
+                    <button
+                      disabled={singleClass.status === "approved"}
+                      onClick={() => handleApproveClass(singleClass._id)}
+                      className="btn btn-secondary btn-xs"
+                    >
                       Approve
                     </button>
-                    <button className="btn btn-primary btn-xs">Deny</button>
-                    <button className="btn btn-warning btn-xs">
+                    <button
+                      disabled={singleClass.status === "denied"}
+                      onClick={() => handleDenyClass(singleClass._id)}
+                      className="btn btn-primary btn-xs"
+                    >
+                      Deny
+                    </button>
+                    <button
+                      onClick={() => handleFeedback(singleClass._id)}
+                      className="btn btn-warning btn-xs"
+                    >
                       Send Feedback
                     </button>
                   </th>

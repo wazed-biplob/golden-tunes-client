@@ -23,7 +23,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
-        alert(`Error :`, error.message);
+        alert(error.message);
       });
   };
   return (

@@ -62,7 +62,17 @@ const Navbar = () => {
               {navLinks}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">GoldenTunes</a>
+          <Link
+            to="/"
+            className="normal-case text-xl font-extrabold flex gap-x-2"
+          >
+            <img
+              style={{ width: "40px", height: "40px" }}
+              src="https://i.ibb.co/CpcMS4d/logo-golden-tunes.jpg"
+              alt="logo"
+            />
+            <span style={{ color: "#FFD700" }}>Golden</span>Tunes
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>

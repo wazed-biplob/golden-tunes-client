@@ -9,20 +9,50 @@ import "./Slider.css";
 // TODO : 2 more slider pictures are to be added
 // import required modules
 import { Navigation } from "swiper";
+import { Fade } from "react-awesome-reveal";
+import { Link } from "react-router-dom";
 
 export default function Slider() {
   return (
-    <div style={{ height: "70vh" }}>
-      <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
-        <SwiperSlide className="relative">
-          <img src="https://i.ibb.co/XZp1jkB/Music-Banner-1.jpg" alt="banner" />
-          <div className="absolute">
-            <h1 style={{ fontSize: "23px" }}>Hello</h1>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-      </Swiper>
-    </div>
+    <Fade duration={2000}>
+      <div style={{ height: "70vh" }}>
+        <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+          <SwiperSlide className="relative">
+            <img
+              src="https://i.ibb.co/XZp1jkB/Music-Banner-1.jpg"
+              alt="banner"
+            />
+            <div className="absolute flex justify-center items-center text-left">
+              <div className="w-1/2 ps-10 flex flex-col gap-4">
+                {" "}
+                <h1
+                  style={{ fontSize: "36px" }}
+                  className="text-white font-extrabold"
+                >
+                  <span style={{ color: "#FFD700" }}>Golden</span> Tunes towards
+                  Remedy
+                </h1>
+                <h1
+                  className="text-white font-extrabold"
+                  style={{ fontSize: "18px" }}
+                >
+                  Welcome to the harmonious realm of our music website, where
+                  melodies transcend boundaries and rhythms ignite your soul
+                </h1>
+                <Link to="/class">
+                  {" "}
+                  <button className="w-1/2 btn glass font-extrabold text-white">
+                    View Classes
+                  </button>
+                </Link>
+              </div>
+              <div className="w-1/2"></div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>Slide 2</SwiperSlide>
+          <SwiperSlide>Slide 3</SwiperSlide>
+        </Swiper>
+      </div>
+    </Fade>
   );
 }
