@@ -1,11 +1,14 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Providers/AuthProviders";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 // TODO : HIDE/UNHIDE PASS
 const Login = () => {
   const { signIn } = useContext(AuthContext);
-  const from = location.state?.from.pathname || "/";
+  const [show, setShow] = useState(true);
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  console.log(`from`, from);
   const navigate = useNavigate();
   const {
     register,
@@ -43,7 +46,7 @@ const Login = () => {
               </div>
               <div className="form-control">
                 <input
-                  type="password"
+                  type={show ? "text" : "password"}
                   placeholder="Password"
                   className="input input-bordered"
                   required
@@ -53,6 +56,18 @@ const Login = () => {
                     maxLength: 20,
                   })}
                 />
+                {
+                  <button
+                    onClick={(e) => {
+                      setShow(!show);
+                      e.preventDefault;
+                    }}
+                    className="btn btn-primary btn-xs mt-2"
+                    type="button"
+                  >
+                    {show ? "Hide" : "Show"}
+                  </button>
+                }
                 {errors.password?.type === "required" && (
                   <p role="alert">Error : password is required</p>
                 )}

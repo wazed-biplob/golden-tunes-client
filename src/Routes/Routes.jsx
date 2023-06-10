@@ -12,6 +12,9 @@ import AddAClass from "../DashBoard/AddAClass";
 import MyClasses from "../DashBoard/MyClasses";
 import AdminRoutes from "./AdminRoutes";
 import Class from "../Pages/Class/Class";
+import SelectedClasses from "../DashBoard/SelectedClasses";
+import EnrolledClasses from "../DashBoard/EnrolledClasses";
+import Payment from "../Components/Payment/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -25,7 +28,10 @@ export const router = createBrowserRouter([
       { path: "/instructors", element: <Instructors /> },
       { path: "/registration", element: <Registration /> },
       { path: "/login", element: <Login /> },
-      { path: "/class", element: <Class /> },
+      {
+        path: "/class",
+        element: <Class />,
+      },
     ],
   },
   {
@@ -55,6 +61,10 @@ export const router = createBrowserRouter([
 
       { path: "addaclass", element: <AddAClass /> },
       { path: "myclasses", element: <MyClasses /> },
+
+      { path: "selected-classes", element: <SelectedClasses /> },
+      { path: "enrolled-classes", element: <EnrolledClasses /> },
+      { path: "checkout", element: <Payment /> },
     ],
   },
 ]);
