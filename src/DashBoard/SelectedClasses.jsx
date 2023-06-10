@@ -1,12 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useSelectedClasses from "../Hooks/useSelectedClasses";
+import Checkout from "../Components/Payment/Checkout";
+import Payment from "../Components/Payment/Payment";
 
 const SelectedClasses = () => {
   const [selectedClasses] = useSelectedClasses();
-  const navigate = useNavigate();
-  const handlePayment = (id) => {
-    navigate("/checkout");
-  };
 
   return (
     <div>
@@ -54,12 +52,10 @@ const SelectedClasses = () => {
                   </td>
                   <td>${singleClass.price}</td>
                   <th className="flex gap-2">
-                    <button
-                      onClick={() => handlePayment(singleClass._id)}
-                      className="btn btn-primary btn-xs"
-                    >
-                      Pay
-                    </button>
+                    <Link to={`/dashboard/payment/${singleClass._id}`}>
+                      {" "}
+                      <button className="btn btn-primary btn-xs">Pay</button>
+                    </Link>
                     <button className="btn btn-info btn-xs text-white">
                       Delete
                     </button>
