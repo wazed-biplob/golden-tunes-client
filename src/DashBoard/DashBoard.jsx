@@ -47,6 +47,10 @@ const DashBoard = () => {
           <li>
             <Link to="enrolled-classes">My Enrolled Classes</Link>
           </li>
+          <div className="divider"></div>
+          <li>
+            <Link to="payment-history">Payment History</Link>
+          </li>
         </>
       )}
     </>

@@ -4,6 +4,7 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { AuthContext } from "../../Providers/AuthProviders";
 import "./Checkout.css";
 const Checkout = ({ singleClass }) => {
+  console.log(singleClass);
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState("");
@@ -70,6 +71,8 @@ const Checkout = ({ singleClass }) => {
         price: price,
         orderStatus: "Pending",
         classId: singleClass._id,
+        className: singleClass.className,
+        instructorEmail: singleClass.instructorEmail,
       };
       AX.post("/payments/", payment).then((res) => {
         console.log(res.data);

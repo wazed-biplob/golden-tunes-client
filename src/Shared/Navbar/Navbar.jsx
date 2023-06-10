@@ -83,10 +83,14 @@ const Navbar = () => {
             <>
               {" "}
               <Link to="/login">
-                <button className="btn btn-xs btn-secondary">Sign in</button>
+                <button className="btn btn-xs btn-info text-white">
+                  Sign in
+                </button>
               </Link>
               <Link to="/registration">
-                <button className="btn btn-xs btn-secondary">Sign Up</button>
+                <button className="btn btn-xs btn-info text-white">
+                  Sign Up
+                </button>
               </Link>
             </>
           )}
