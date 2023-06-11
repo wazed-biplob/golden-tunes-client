@@ -7,9 +7,12 @@ import "./Navbar.css";
 import { FcHome } from "react-icons/fc";
 import { MdPeopleAlt, MdDashboard } from "react-icons/md";
 import { FaGraduationCap } from "react-icons/fa";
+import Toggle from "react-toggle";
+import { VarContext } from "../../Providers/VarsProviders";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const { mode, setMode } = useContext(VarContext);
   const auth = getAuth(app);
   const signOut = () => {
     logOut(auth)
@@ -50,7 +53,7 @@ const Navbar = () => {
   );
   return (
     <>
-      <div className="navbar bg-base-100">
+      <div data-theme={mode ? "dark" : "light"} className="navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -94,6 +97,9 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
         <div className="navbar-end flex gap-4">
+          <label>
+            <Toggle icons={false} onChange={() => setMode(!mode)} />
+          </label>
           {user ? (
             <>
               <img

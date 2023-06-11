@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import "./Footer.css";
+import { VarContext } from "../../Providers/VarsProviders";
 const Footer = () => {
+  const { mode } = useContext(VarContext);
   return (
-    <footer className="mt-12">
+    <footer data-theme={mode ? "dark" : "light"}>
       <div className="footer p-10 bg-base-200 text-base-content">
         <div>
           <img

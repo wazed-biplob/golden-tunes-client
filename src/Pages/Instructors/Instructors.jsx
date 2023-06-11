@@ -18,7 +18,11 @@ const Instructors = () => {
           <>
             <div className="card w-full bg-base-100 shadow-xl">
               <figure>
-                <img src={instructor.image} alt={instructor.name} />
+                <img
+                  // style={{ height: "300px" }}
+                  src={instructor.image}
+                  alt={instructor.name}
+                />
               </figure>
               <div className="card-body">
                 <h2 className="card-title">{instructor.name}</h2>
