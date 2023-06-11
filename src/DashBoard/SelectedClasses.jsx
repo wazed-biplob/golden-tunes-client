@@ -8,7 +8,7 @@ import { AuthContext } from "../Providers/AuthProviders";
 const SelectedClasses = () => {
   const [selectedClasses, refetch] = useSelectedClasses();
   const handleDeleteClass = (id) => {
-    fetch(`http://localhost:5000/delete-class/${id}`, {
+    fetch(`https://golden-tunes-server.vercel.app/delete-class/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

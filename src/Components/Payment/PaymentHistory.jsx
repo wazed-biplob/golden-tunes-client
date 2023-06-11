@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import useEnrolledClasses from "../../Hooks/useEnrolledClasses";
+import { AuthContext } from "../../Providers/AuthProviders";
 
 const PaymentHistory = () => {
   const [enrolledClasses] = useEnrolledClasses();
+
+  const { user } = useContext(AuthContext);
   return (
     <div>
       <div className="overflow-x-auto">
@@ -12,7 +15,7 @@ const PaymentHistory = () => {
               <th>#</th>
               <th>Class Name</th>
               <th>Instructor Email</th>
-              <th>Student Email</th>
+
               <th>Price</th>
               <th>Transaction Id</th>
             </tr>
@@ -24,7 +27,7 @@ const PaymentHistory = () => {
                   <th>{i + 1}</th>
                   <td>{singleClass.className}</td>
                   <td>{singleClass.instructorEmail}</td>
-                  <td>{singleClass.studentEmail}</td>
+
                   <td>{singleClass.price}</td>
                   <td>{singleClass.transactionId}</td>
                 </tr>

@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProviders";
 const AX = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://golden-tunes-server.vercel.app",
 });
 const useAxiosSecure = () => {
   const { logOut } = useContext(AuthContext);

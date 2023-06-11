@@ -10,10 +10,11 @@ const Class = () => {
   const navigate = useNavigate();
   const [approvedClasses, setApprovedClasses] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/approved-classes`)
+    fetch(`https://golden-tunes-server.vercel.app/approved-classes`)
       .then((res) => res.json())
       .then((data) => setApprovedClasses(data));
   }, []);
+
   const [userRole] = useUserRole();
 
   console.log(approvedClasses);
@@ -21,7 +22,7 @@ const Class = () => {
     const selectedClass = approvedClasses.find(
       (singleClass) => singleClass._id === id
     );
-
+    // if user exists he/she can select classes
     if (user) {
       const selectedClassInfo = {
         classId: id,
@@ -31,7 +32,7 @@ const Class = () => {
         price: selectedClass.price,
       };
       console.log(selectedClassInfo);
-      fetch("http://localhost:5000/selected-classes", {
+      fetch("https://golden-tunes-server.vercel.app/selected-classes", {
         method: "POST",
         headers: {
           "content-type": "application/json",

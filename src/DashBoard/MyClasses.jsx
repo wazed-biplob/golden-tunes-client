@@ -1,17 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../Providers/AuthProviders";
+import useMyClasses from "../Hooks/useMyClasses";
 
 const MyClasses = () => {
-  const { user } = useContext(AuthContext);
-  const [classes, setClasses] = useState([]);
-  console.log(classes);
-  useEffect(() => {
-    fetch(`http://localhost:5000/my-classes/instructor/${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setClasses(data);
-      });
-  }, [user?.email]);
+  const [myClasses] = useMyClasses();
+
   return (
     <div>
       <div className="overflow-x-auto">
@@ -29,7 +20,7 @@ const MyClasses = () => {
           </thead>
           <tbody>
             {/* row 1 */}
-            {classes.map((singleClass, i) => (
+            {myClasses?.map((singleClass, i) => (
               <>
                 <tr>
                   <th>{i + 1}</th>

@@ -4,7 +4,9 @@ const ManageClasses = () => {
   const [classes] = useClasses();
   console.log(classes);
   const handleApproveClass = (id) => {
-    fetch(`http://localhost:5000/approve-class/${id}`, { method: "POST" })
+    fetch(`https://golden-tunes-server.vercel.app/approve-class/${id}`, {
+      method: "POST",
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {
@@ -13,7 +15,9 @@ const ManageClasses = () => {
       });
   };
   const handleDenyClass = (id) => {
-    fetch(`http://localhost:5000/deny-class/${id}`, { method: "POST" })
+    fetch(`https://golden-tunes-server.vercel.app/deny-class/${id}`, {
+      method: "POST",
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {
@@ -23,19 +27,23 @@ const ManageClasses = () => {
   };
   const handleFeedback = (id) => {
     const feedback = prompt("Write Reasons this class is denied for.");
-    fetch(`http://localhost:5000/class-feedback/${id}`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ feedback }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount) {
-          alert("Feedback Has been recorded.");
-        }
-      });
+    if (prompt) {
+      fetch(`https://golden-tunes-server.vercel.app/class-feedback/${id}`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ feedback }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.modifiedCount) {
+            alert(
+              "Feedback Has been recorded. The instructor can view the feedback."
+            );
+          }
+        });
+    }
   };
   return (
     <>

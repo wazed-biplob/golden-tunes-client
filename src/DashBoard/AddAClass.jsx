@@ -27,7 +27,7 @@ const AddAClass = () => {
       totalEnrolledStudents: 0,
     };
     console.log(classInfo);
-    fetch("http://localhost:5000/add-class", {
+    fetch("https://golden-tunes-server.vercel.app/add-class", {
       method: "POST",
       headers: {
         "content-type": "application/json",

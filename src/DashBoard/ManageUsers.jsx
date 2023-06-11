@@ -9,7 +9,7 @@ const ManageUsers = () => {
 
   const handleMakeAdmin = () => {};
   const handleMakeInstructor = (id) => {
-    fetch(`http://localhost:5000/users/instructor/${id}`, {
+    fetch(`https://golden-tunes-server.vercel.app/users/instructor/${id}`, {
       method: "POST",
     })
       .then((res) => res.json())

@@ -5,7 +5,7 @@ const Instructors = () => {
   const [instructors, setInstructors] = useState([]);
   console.log(instructors);
   useEffect(() => {
-    fetch(`http://localhost:5000/users/instructors`)
+    fetch(`https://golden-tunes-server.vercel.app/instructors`)
       .then((res) => res.json())
       .then((data) => setInstructors(data));
   }, []);
@@ -13,7 +13,7 @@ const Instructors = () => {
     <>
       {" "}
       <SectionHeading heading={`Instructors`} />{" "}
-      <div className="grid grid-cols-3 gap-4 mt-10">
+      <div className="grid grid-cols-3 gap-4 py-10">
         {instructors?.map((instructor) => (
           <>
             <div className="card w-full bg-base-100 shadow-xl">

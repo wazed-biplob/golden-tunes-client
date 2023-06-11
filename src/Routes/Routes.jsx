@@ -17,6 +17,8 @@ import EnrolledClasses from "../DashBoard/EnrolledClasses";
 import Payment from "../Components/Payment/Payment";
 import PaymentHistory from "../Components/Payment/PaymentHistory";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import InstructorRoutes from "./InstructorRoutes";
+import StudentRoutes from "./StudentRoutes";
 
 export const router = createBrowserRouter([
   {
@@ -61,13 +63,55 @@ export const router = createBrowserRouter([
         ),
       },
 
-      { path: "addaclass", element: <AddAClass /> },
-      { path: "myclasses", element: <MyClasses /> },
+      {
+        path: "addaclass",
+        element: (
+          <InstructorRoutes>
+            <AddAClass />
+          </InstructorRoutes>
+        ),
+      },
+      {
+        path: "myclasses",
+        element: (
+          <InstructorRoutes>
+            <MyClasses />
+          </InstructorRoutes>
+        ),
+      },
 
-      { path: "selected-classes", element: <SelectedClasses /> },
-      { path: "enrolled-classes", element: <EnrolledClasses /> },
-      { path: "payment/:id", element: <Payment /> },
-      { path: "payment-history", element: <PaymentHistory /> },
+      {
+        path: "selected-classes",
+        element: (
+          <StudentRoutes>
+            <SelectedClasses />
+          </StudentRoutes>
+        ),
+      },
+      {
+        path: "enrolled-classes",
+        element: (
+          <StudentRoutes>
+            <EnrolledClasses />
+          </StudentRoutes>
+        ),
+      },
+      {
+        path: "payment/:id",
+        element: (
+          <StudentRoutes>
+            <Payment />{" "}
+          </StudentRoutes>
+        ),
+      },
+      {
+        path: "payment-history",
+        element: (
+          <StudentRoutes>
+            <PaymentHistory />
+          </StudentRoutes>
+        ),
+      },
     ],
   },
   { path: "*", element: <ErrorPage /> },

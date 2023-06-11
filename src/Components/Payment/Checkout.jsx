@@ -81,7 +81,7 @@ const Checkout = ({ singleClass }) => {
           alert("Successfully Processed.");
 
           fetch(
-            `http://localhost:5000/class-seat-count/${singleClass?.classId}`,
+            `https://golden-tunes-server.vercel.app/class-seat-count/${singleClass?.classId}`,
             {
               method: "POST",
             }

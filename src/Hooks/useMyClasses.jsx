@@ -3,19 +3,18 @@ import { AuthContext } from "../Providers/AuthProviders";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "./useAxiosSecure";
 
-const useUserRole = () => {
+const useMyClasses = () => {
   const { user, loading } = useContext(AuthContext);
-
   const [AX] = useAxiosSecure();
-  const { data: userRole } = useQuery({
-    queryKey: ["userRole", user?.email],
+  const { data: myClasses, refetch } = useQuery({
+    queryKey: ["classes"],
     enabled: !loading,
     queryFn: async () => {
-      const response = await AX(`/users/${user?.email}`);
-      return response.data.role;
+      const response = await AX(`/my-classes/instructor/${user?.email}`);
+      return response.data;
     },
   });
-  return [userRole];
+  return [myClasses, refetch];
 };
 
-export default useUserRole;
+export default useMyClasses;

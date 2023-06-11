@@ -33,7 +33,7 @@ const Registration = () => {
             role: "student",
             image: data.photo,
           };
-          fetch("http://localhost:5000/users", {
+          fetch("https://golden-tunes-server.vercel.app/users", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -114,7 +114,8 @@ const Registration = () => {
                 )}
                 {errors.password?.type === "pattern" && (
                   <p role="alert">
-                    Required: One Capital, small Later, Special Char and number.
+                    At Least one capital and small letter, one Special Char and
+                    a number required.
                   </p>
                 )}
               </div>
