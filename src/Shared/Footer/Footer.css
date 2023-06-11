@@ -1,0 +1,8 @@
+@media only screen and (max-width: 576px) {
+  .subscribe {
+    width: 200px !important;
+  }
+  .btn-subscribe {
+    right: 40px;
+  }
+}

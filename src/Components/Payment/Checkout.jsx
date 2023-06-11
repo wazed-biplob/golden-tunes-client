@@ -3,8 +3,10 @@ import { useContext, useEffect, useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { AuthContext } from "../../Providers/AuthProviders";
 import "./Checkout.css";
+import { useNavigate } from "react-router-dom";
 const Checkout = ({ singleClass }) => {
-  console.log(singleClass);
+  console.log("single class", singleClass);
+
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState("");
@@ -13,6 +15,7 @@ const Checkout = ({ singleClass }) => {
   const { user } = useContext(AuthContext);
   const [processing, setProcessing] = useState(false);
   const [transactionId, setTransactionId] = useState("");
+  const navigate = useNavigate();
   const price = singleClass?.price;
   useEffect(() => {
     if (price > 0) {
@@ -70,14 +73,23 @@ const Checkout = ({ singleClass }) => {
         transactionId: transactionId,
         price: price,
         orderStatus: "Pending",
-        classId: singleClass._id,
-        className: singleClass.className,
-        instructorEmail: singleClass.instructorEmail,
+        classId: singleClass?._id,
+        className: singleClass?.className,
+        instructorEmail: singleClass?.instructorEmail,
       };
       AX.post("/payments/", payment).then((res) => {
         console.log(res.data);
         if (res.data.insertResult.insertedId) {
           alert("Successfully Processed.");
+          navigate("/payment-history");
+          fetch(
+            `http://localhost:5000/class-seat-count/${singleClass?.classId}`,
+            {
+              method: "POST",
+            }
+          )
+            .then((res) => res.json())
+            .then((data) => console.log(data));
         }
       });
     }

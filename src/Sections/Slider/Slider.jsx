@@ -23,14 +23,16 @@ export default function Slider() {
               alt="banner"
             />
             <div className="absolute flex justify-center items-center text-left">
-              <div className="w-1/2 ps-10 flex flex-col gap-4">
+              <div className="text-container w-1/2 ps-10 pr-8 flex flex-col gap-4">
                 {" "}
                 <h1
                   style={{ fontSize: "36px" }}
                   className="text-white font-extrabold"
                 >
-                  <span style={{ color: "#FFD700" }}>Golden</span> Tunes towards
-                  Remedy
+                  <span className="heading">
+                    <span style={{ color: "#FFD700" }}>Golden</span> Tunes
+                    towards Remedy
+                  </span>
                 </h1>
                 <h1
                   className="text-white font-extrabold"
@@ -46,7 +48,7 @@ export default function Slider() {
                   </button>
                 </Link>
               </div>
-              <div className="w-1/2"></div>
+              <div className="extra w-1/2"></div>
             </div>
           </SwiperSlide>
           <SwiperSlide>Slide 2</SwiperSlide>

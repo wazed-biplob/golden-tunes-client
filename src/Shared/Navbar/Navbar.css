@@ -1,0 +1,8 @@
+@media only screen and (max-width: 576px) {
+  .brand-name {
+    display: none;
+  }
+  .menu {
+    z-index: 99;
+  }
+}

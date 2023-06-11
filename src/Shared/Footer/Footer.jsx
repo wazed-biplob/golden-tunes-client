@@ -1,3 +1,4 @@
+import "./Footer.css";
 const Footer = () => {
   return (
     <footer className="mt-12">
@@ -49,9 +50,9 @@ const Footer = () => {
               <input
                 type="text"
                 placeholder="Email"
-                className="input input-bordered w-full pr-16"
+                className="subscribe input input-bordered w-full pr-16"
               />
-              <button className="btn btn-primary absolute top-0 right-0 rounded-l-none">
+              <button className="btn btn-subscribe btn-primary absolute top-0 right-0 rounded-l-none">
                 Subscribe
               </button>
             </div>

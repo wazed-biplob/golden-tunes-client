@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { getAuth } from "firebase/auth";
 import app from "../../Firebase/firebase.config";
+import "./Navbar.css";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -71,7 +72,9 @@ const Navbar = () => {
               src="https://i.ibb.co/CpcMS4d/logo-golden-tunes.jpg"
               alt="logo"
             />
-            <span style={{ color: "#FFD700" }}>Golden</span>Tunes
+            <span className="brand-name">
+              <span style={{ color: "#FFD700" }}>Golden</span>Tunes
+            </span>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
