@@ -7,6 +7,7 @@ import {
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
 
@@ -28,7 +29,7 @@ const AuthProviders = ({ children }) => {
   };
   const googleSignIn = () => {
     setLoading(true);
-    return signInWithEmailAndPassword(auth, googleProvider);
+    return signInWithPopup(auth, googleProvider);
   };
   const logOut = () => {
     setLoading(true);

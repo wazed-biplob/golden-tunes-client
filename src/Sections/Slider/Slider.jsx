@@ -51,8 +51,12 @@ export default function Slider() {
               <div className="extra w-1/2"></div>
             </div>
           </SwiperSlide>
-          <SwiperSlide>Slide 2</SwiperSlide>
-          <SwiperSlide>Slide 3</SwiperSlide>
+          <SwiperSlide>
+            <img src="https://i.ibb.co/dpqb9MS/b-2.jpg" alt="banner" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://i.ibb.co/Mk0p00h/b-3.jpg" alt="banner" />
+          </SwiperSlide>
         </Swiper>
       </div>
     </Fade>

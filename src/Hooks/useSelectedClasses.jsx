@@ -4,10 +4,9 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "./useAxiosSecure";
 
 const useSelectedClasses = () => {
-  const { loading } = useContext(AuthContext);
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   const [AX] = useAxiosSecure();
-  const { data: selectedClasses } = useQuery({
+  const { data: selectedClasses, refetch } = useQuery({
     queryKey: ["classes"],
     enabled: !loading,
     queryFn: async () => {
@@ -15,7 +14,7 @@ const useSelectedClasses = () => {
       return response.data;
     },
   });
-  return [selectedClasses];
+  return [selectedClasses, refetch];
 };
 
 export default useSelectedClasses;

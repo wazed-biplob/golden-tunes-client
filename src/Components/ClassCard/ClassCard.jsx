@@ -12,7 +12,7 @@ const ClassCard = ({ singleClass }) => {
   } = singleClass;
   return (
     <div>
-      <div className="card w-96 bg-base-100 shadow-xl">
+      <div className="card w-full bg-base-100 shadow-xl">
         <figure>
           <img src={image} alt="Shoes" />
         </figure>
@@ -32,7 +32,7 @@ const ClassCard = ({ singleClass }) => {
               {instructorName}
             </div>
           </h2>
-          <p>{feedback}</p>
+
           <div className="card-actions justify-end">
             <div className="badge badge-outline">
               Students : {totalEnrolledStudents}

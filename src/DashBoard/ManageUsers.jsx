@@ -27,7 +27,7 @@ const ManageUsers = () => {
           <thead>
             <tr>
               <th>#</th>
-              <th>User Picture and Name </th>
+              <th>User Name </th>
               <th>User Email</th>
               <th>User Role</th>
               <th>Make Instructor</th>
@@ -45,11 +45,6 @@ const ManageUsers = () => {
                   </th>
                   <td>
                     <div className="flex items-center space-x-3">
-                      <div className="avatar">
-                        <div className="mask mask-squircle w-12 h-12">
-                          <img src={user.image} alt={user.name} />
-                        </div>
-                      </div>
                       <div>
                         <div className="font-bold">{user.name}</div>
                         <div className="text-sm opacity-50"></div>

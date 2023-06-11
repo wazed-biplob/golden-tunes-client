@@ -4,6 +4,7 @@ import { AuthContext } from "../Providers/AuthProviders";
 const MyClasses = () => {
   const { user } = useContext(AuthContext);
   const [classes, setClasses] = useState([]);
+  console.log(classes);
   useEffect(() => {
     fetch(`http://localhost:5000/my-classes/instructor/${user?.email}`)
       .then((res) => res.json())
@@ -36,7 +37,7 @@ const MyClasses = () => {
                   <td>{singleClass.availableSeats}</td>
                   <td>{singleClass.totalEnrolledStudents}</td>
                   <td>{singleClass.status}</td>
-                  <td>{singleClass.Feedback}</td>
+                  <td>{singleClass.feedback}</td>
                 </tr>
               </>
             ))}

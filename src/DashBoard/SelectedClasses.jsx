@@ -1,10 +1,22 @@
 import { Link } from "react-router-dom";
 import useSelectedClasses from "../Hooks/useSelectedClasses";
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthProviders";
 
 // TODO : DELETE FROM CART
 
 const SelectedClasses = () => {
-  const [selectedClasses] = useSelectedClasses();
+  const [selectedClasses, refetch] = useSelectedClasses();
+  const handleDeleteClass = (id) => {
+    fetch(`http://localhost:5000/delete-class/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        refetch();
+      });
+  };
   if (selectedClasses?.length !== 0) {
     console.log(selectedClasses);
     return (
@@ -44,7 +56,10 @@ const SelectedClasses = () => {
                         {" "}
                         <button className="btn btn-primary btn-xs">Pay</button>
                       </Link>
-                      <button className="btn btn-info btn-xs text-white">
+                      <button
+                        onClick={() => handleDeleteClass(singleClass._id)}
+                        className="btn btn-info btn-xs text-white"
+                      >
                         Delete
                       </button>
                     </th>

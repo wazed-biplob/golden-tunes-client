@@ -18,7 +18,6 @@ const Navbar = () => {
 
   const navLinks = (
     <>
-      {" "}
       <li>
         <Link to="/">Home</Link>
       </li>
@@ -88,7 +87,10 @@ const Navbar = () => {
                 src={user?.photoURL}
                 alt={user?.displayName}
               />
-              <button onClick={signOut} className="btn btn-xs btn-secondary">
+              <button
+                onClick={signOut}
+                className="btn btn-xs btn-info text-white"
+              >
                 Log Out
               </button>{" "}
             </>

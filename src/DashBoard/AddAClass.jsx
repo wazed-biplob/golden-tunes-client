@@ -16,7 +16,7 @@ const AddAClass = () => {
     const price = form.price.value;
     const seats = form.seats.value;
     const classInfo = {
-      availableSeats: seats,
+      availableSeats: parseInt(seats),
       className: className,
       feedback: "",
       image: image,

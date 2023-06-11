@@ -2,10 +2,12 @@ import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-// TODO : HIDE/UNHIDE PASS
+import { AiFillEyeInvisible } from "react-icons/ai";
+import { AiFillEye } from "react-icons/ai";
+import { FcGoogle } from "react-icons/fc";
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
-  const [show, setShow] = useState(true);
+  const { signIn, googleSignIn } = useContext(AuthContext);
+  const [show, setShow] = useState(false);
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   console.log(`from`, from);
@@ -16,6 +18,30 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then((res) => {
+        const user = {
+          name: res.user.displayName,
+          email: res.user.email,
+          role: "student",
+          image: res.user.photoURL,
+        };
+
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then(() => {});
+        navigate(from);
+      })
+
+      .catch((e) => console.log(e));
+  };
   const onSubmit = (data) => {
     signIn(data.email, data.password)
       .then(() => {
@@ -57,16 +83,9 @@ const Login = () => {
                   })}
                 />
                 {
-                  <button
-                    onClick={(e) => {
-                      setShow(!show);
-                      e.preventDefault;
-                    }}
-                    className="btn btn-primary btn-xs mt-2"
-                    type="button"
-                  >
-                    {show ? "Hide" : "Show"}
-                  </button>
+                  <span onClick={() => setShow(!show)}>
+                    {show ? <AiFillEye /> : <AiFillEyeInvisible />}
+                  </span>
                 }
                 {errors.password?.type === "required" && (
                   <p role="alert">Error : password is required</p>
@@ -87,10 +106,16 @@ const Login = () => {
                 </span>
               </label>
               <div className="form-control mt-2">
-                <button className="btn btn-glass">Sign In</button>
+                <button className="btn btn-info text-white">Sign In</button>
+              </div>
+              <div className="mx-auto mt-4">
+                <FcGoogle
+                  onClick={handleGoogleSignIn}
+                  type="button"
+                  style={{ fontSize: "28px", cursor: "pointer" }}
+                />
               </div>
             </form>
-            <button className="btn btn-info m-2">Sign in With Google</button>
           </div>
         </div>
       </div>

@@ -67,10 +67,11 @@ const Class = () => {
                   ? { backgroundColor: "red" }
                   : {}
               }
-              className="card w-96 bg-base-100 shadow-xl"
+              className="card w-full bg-base-100 shadow-xl"
             >
-              <figure className="px-10 pt-10">
+              <figure className="px-2 pt-2">
                 <img
+                  style={{ height: "300px" }}
                   src={singleClass.image}
                   alt={singleClass.className}
                   className="rounded-xl"
