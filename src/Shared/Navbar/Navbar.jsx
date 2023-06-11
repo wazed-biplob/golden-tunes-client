@@ -4,6 +4,9 @@ import { AuthContext } from "../../Providers/AuthProviders";
 import { getAuth } from "firebase/auth";
 import app from "../../Firebase/firebase.config";
 import "./Navbar.css";
+import { FcHome } from "react-icons/fc";
+import { MdPeopleAlt, MdDashboard } from "react-icons/md";
+import { FaGraduationCap } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -19,17 +22,28 @@ const Navbar = () => {
   const navLinks = (
     <>
       <li>
-        <Link to="/">Home</Link>
+        <Link to="/">
+          <FcHome style={{ fontSize: "26px" }} />
+          Home
+        </Link>
       </li>
       <li>
-        <Link to="/instructors">Instructors</Link>
+        <Link to="/instructors">
+          <MdPeopleAlt style={{ fontSize: "26px" }} /> Instructors
+        </Link>
       </li>
       <li>
-        <Link to="/class">Classes</Link>
+        <Link to="/class">
+          <FaGraduationCap style={{ fontSize: "26px" }} />
+          Classes
+        </Link>
       </li>
       {user && (
         <li>
-          <Link to="/dashboard">DashBoard</Link>
+          <Link to="/dashboard">
+            <MdDashboard style={{ color: "lightblue", fontSize: "26px" }} />
+            DashBoard
+          </Link>
         </li>
       )}
     </>

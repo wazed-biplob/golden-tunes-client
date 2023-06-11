@@ -2,6 +2,11 @@ import { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import useUserRole from "../Hooks/useUserRole";
 import { AuthContext } from "../Providers/AuthProviders";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { FcHome, FcInfo, FcPaid, FcProcess } from "react-icons/fc";
+import { SiAddthis } from "react-icons/si";
+import { FcGraduationCap } from "react-icons/fc";
+import { RiUserSearchLine } from "react-icons/ri";
 
 const DashBoard = () => {
   const [userRole] = useUserRole();
@@ -12,44 +17,76 @@ const DashBoard = () => {
         <>
           {" "}
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/">
+              <FcHome style={{ fontSize: "26px" }} />
+              Home
+            </Link>
           </li>
           <div className="divider"></div>
           <li>
-            <Link to="manageclasses">Manage Classes</Link>
+            <Link to="manageclasses">
+              <FcProcess style={{ fontSize: "24px" }} />
+              Manage Classes
+            </Link>
           </li>
           <li>
-            <Link to="manageusers">Manage Users</Link>
+            <Link to="manageusers">
+              <RiUserSearchLine style={{ color: "blue", fontSize: "24px" }} />
+              Manage Users
+            </Link>
           </li>
         </>
       ) : userRole === "instructor" ? (
         <>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/">
+              <FcHome style={{ fontSize: "26px" }} />
+              Home
+            </Link>
           </li>
           <div className="divider"></div>
           <li>
-            <Link to="addaclass">Add A Class</Link>
+            <Link to="addaclass">
+              <SiAddthis style={{ color: "blue", fontSize: "24px" }} />
+              Add A Class
+            </Link>
           </li>
           <li>
-            <Link to="myclasses">My Classes</Link>
+            <Link to="myclasses">
+              <FcGraduationCap style={{ color: "blue", fontSize: "28px" }} />
+              My Classes
+            </Link>
           </li>
         </>
       ) : (
         <>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/">
+              <FcHome style={{ fontSize: "26px" }} />
+              Home
+            </Link>
           </li>
           <div className="divider"></div>
           <li>
-            <Link to="selected-classes">My Selected Classes</Link>
+            <Link to="selected-classes">
+              <AiOutlineShoppingCart
+                style={{ color: "blue", fontSize: "26px" }}
+              />
+              My Selected Classes
+            </Link>
           </li>
           <li>
-            <Link to="enrolled-classes">My Enrolled Classes</Link>
+            <Link to="enrolled-classes">
+              <FcPaid style={{ color: "green", fontSize: "26px" }} /> Enrolled
+              Classes
+            </Link>
           </li>
           <div className="divider"></div>
           <li>
-            <Link to="payment-history">Payment History</Link>
+            <Link to="payment-history">
+              <FcInfo style={{ fontSize: "26px" }} />
+              Payment History
+            </Link>
           </li>
         </>
       )}

@@ -100,6 +100,7 @@ const Registration = () => {
                     required: true,
                     minLength: 6,
                     maxLength: 20,
+                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
                   })}
                 />
                 {errors.password?.type === "required" && (
@@ -110,6 +111,11 @@ const Registration = () => {
                 )}
                 {errors.password?.type === "maxLength" && (
                   <p role="alert">Error : Less than 20 char required</p>
+                )}
+                {errors.password?.type === "pattern" && (
+                  <p role="alert">
+                    Required: One Capital, small Later, Special Char and number.
+                  </p>
                 )}
               </div>
               <div className="form-control">
