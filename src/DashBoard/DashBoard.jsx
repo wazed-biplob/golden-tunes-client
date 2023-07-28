@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import useUserRole from "../Hooks/useUserRole";
 import { AuthContext } from "../Providers/AuthProviders";
 import { AiOutlineShoppingCart } from "react-icons/ai";
@@ -7,10 +7,17 @@ import { FcHome, FcInfo, FcPaid, FcProcess } from "react-icons/fc";
 import { SiAddthis } from "react-icons/si";
 import { FcGraduationCap } from "react-icons/fc";
 import { RiUserSearchLine } from "react-icons/ri";
-
+import { LuLogOut } from "react-icons/lu";
 const DashBoard = () => {
   const [userRole] = useUserRole();
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+    navigate("/");
+  };
   const dashboardLinks = (
     <>
       {userRole === "admin" ? (
@@ -108,9 +115,32 @@ const DashBoard = () => {
         </div>
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+
           <ul className="menu p-4 w-80 h-full bg-slate-200 bg-base-200 text-base-content">
+            <li className="flex flex-col items-center">
+              <img
+                style={{
+                  width: "100px",
+                  height: "100px",
+                  borderRadius: "50%",
+                  padding: "0",
+                }}
+                src={user?.photoURL}
+                alt={user?.name}
+              />
+              <p>{user?.email}</p>
+              <p className="font-extrabold">{userRole}</p>
+            </li>
+            <div className="divider"></div>
             {/* Sidebar content here */}
             {dashboardLinks}
+            <div className="divider"></div>
+            <li>
+              <Link type="button" onClick={() => handleLogOut()}>
+                <LuLogOut style={{ fontSize: "26px" }} />
+                Log out
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

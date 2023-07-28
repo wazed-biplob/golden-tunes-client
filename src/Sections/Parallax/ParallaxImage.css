@@ -9,4 +9,8 @@
   .btn-parallax {
     width: 300px !important;
   }
+  .time-24,
+  .time-28 {
+    display: none;
+  }
 }

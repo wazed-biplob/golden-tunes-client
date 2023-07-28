@@ -1,3 +1,6 @@
+import { RiUser3Fill } from "react-icons/ri";
+import { FaUserAlt } from "react-icons/fa";
+
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line react/prop-types
 const ClassCard = ({ singleClass }) => {
@@ -14,7 +17,7 @@ const ClassCard = ({ singleClass }) => {
     <div>
       <div className="card w-full bg-base-100 shadow-xl">
         <figure>
-          <img src={image} alt="Shoes" />
+          <img src={image} alt="image" />
         </figure>
         <div className="card-body">
           <h2 className="card-title font-extrabold">

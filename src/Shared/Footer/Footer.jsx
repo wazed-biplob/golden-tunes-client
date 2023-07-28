@@ -42,7 +42,7 @@ const Footer = () => {
         </div>
         <div>
           <span className="footer-title">Newsletter</span>
-          <div className="form-control w-80">
+          <div className="subscribe form-control w-80">
             <label className="label">
               <span className="label-text">
                 Unlock a symphony of limitless music with our exclusive

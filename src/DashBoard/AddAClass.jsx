@@ -1,10 +1,11 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+
 import { AuthContext } from "../Providers/AuthProviders";
+import { useNavigate } from "react-router-dom";
 
 const AddAClass = () => {
-  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleAddAClass = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -12,7 +13,6 @@ const AddAClass = () => {
     const image = form.pictureURL.value;
     const instructorName = user?.displayName;
     const instructorEmail = user?.email;
-
     const price = form.price.value;
     const seats = form.seats.value;
     const classInfo = {
@@ -39,6 +39,7 @@ const AddAClass = () => {
         if (d.insertedId) {
           alert("Class Has Been Added Successfully.");
           form.reset();
+          navigate("/dashboard/myclasses");
         }
       });
   };

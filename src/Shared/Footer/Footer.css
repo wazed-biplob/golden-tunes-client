@@ -3,6 +3,9 @@
     width: 200px !important;
   }
   .btn-subscribe {
-    right: 40px;
+    right: 0px;
+  }
+  .subscribe {
+    width: 100% !important;
   }
 }

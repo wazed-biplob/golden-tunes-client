@@ -147,4 +147,7 @@
   .menu {
     z-index: 99;
   }
+  .btn-signin {
+    display: none;
+  }
 }

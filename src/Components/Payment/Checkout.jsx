@@ -15,6 +15,7 @@ const Checkout = ({ singleClass }) => {
   const [transactionId, setTransactionId] = useState("");
   const navigate = useNavigate();
   const price = singleClass?.price;
+
   useEffect(() => {
     if (price > 0) {
       AX.post("/create-payment-intent", { price }).then((res) => {
@@ -91,6 +92,8 @@ const Checkout = ({ singleClass }) => {
         }
       });
     }
+
+    navigate("/dashboard/enrolled-classes");
   };
   return (
     <>

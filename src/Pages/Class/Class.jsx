@@ -3,16 +3,23 @@ import SectionHeading from "../../Components/SectionHeading/SectionHeading";
 import useUserRole from "../../Hooks/useUserRole";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { useLocation, useNavigate } from "react-router-dom";
+import { FaMoneyCheckAlt, FaUserAlt } from "react-icons/fa";
+import { MdEmail, MdEventSeat } from "react-icons/md";
 
 const Class = () => {
   const { user } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   const [approvedClasses, setApprovedClasses] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  
   useEffect(() => {
     fetch(`https://golden-tunes-server.vercel.app/approved-classes`)
       .then((res) => res.json())
-      .then((data) => setApprovedClasses(data));
+      .then((data) => {
+        setApprovedClasses(data);
+        setIsLoading(false)
+      });
   }, []);
 
   const [userRole] = useUserRole();
@@ -59,12 +66,12 @@ const Class = () => {
         heading={`All Classes`}
         subheading={`Choose your favorite`}
       />{" "}
-      <div className="grid grid-cols-3 gap-4 mt-2">
-        {approvedClasses?.map((singleClass) => (
+      <div className="grid grid-cols-3 gap-4 mt-2 pb-2">
+      {isLoading ? <><p>...loading</p></> :    approvedClasses?.map((singleClass) => (
           <>
             <div
               style={
-                singleClass.availableSeats === "0"
+                singleClass.availableSeats === 0
                   ? { backgroundColor: "red" }
                   : {}
               }
@@ -80,11 +87,27 @@ const Class = () => {
               </figure>
               <div className="card-body items-center text-center">
                 <h2 className="card-title">{singleClass.className}</h2>
-                <p>{singleClass.instructorName}</p>
-                <p>{singleClass.instructorEmail}</p>
-                <div className="flex gap-4">
-                  <p>${singleClass.price}</p>
-                  <p>Seats : {singleClass.availableSeats}</p>
+                <div className="flex justify-center items-center gap-x-2">
+                  <FaUserAlt style={{ color: "lightgrey" }} />
+                  <p>{singleClass.instructorName}</p>
+                </div>
+
+                <div className="flex justify-center items-center gap-x-2">
+                  {" "}
+                  <MdEmail />
+                  <p className="font-extrabold">
+                    {singleClass.instructorEmail}
+                  </p>
+                </div>
+                <div className="flex gap-4 justify-center items-center">
+                  <div className="flex items-center gap-x-2">
+                    <FaMoneyCheckAlt style={{ fontSize: "26px" }} />
+                    <p>${singleClass.price}</p>
+                  </div>
+                  <div className="flex items-center gap-x-2">
+                    <MdEventSeat style={{ fontSize: "26px" }} />
+                    <p>Seats : {singleClass.availableSeats}</p>
+                  </div>
                 </div>
                 <div className="card-actions">
                   <button
@@ -102,7 +125,7 @@ const Class = () => {
               </div>
             </div>
           </>
-        ))}
+        ))} 
       </div>
     </>
   );

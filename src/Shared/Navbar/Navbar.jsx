@@ -53,7 +53,10 @@ const Navbar = () => {
   );
   return (
     <>
-      <div data-theme={mode ? "dark" : "light"} className="navbar bg-base-100">
+      <div
+        data-theme={mode ? "dark" : "light"}
+        className="navbar px-4 bg-base-100"
+      >
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -118,7 +121,7 @@ const Navbar = () => {
             <>
               {" "}
               <Link to="/login">
-                <button className="btn btn-xs btn-info text-white">
+                <button className="btn-signin btn btn-xs btn-info text-white">
                   Sign in
                 </button>
               </Link>

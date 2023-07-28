@@ -95,7 +95,10 @@ const ManageClasses = () => {
                   <td>{singleClass.status}</td>
                   <th className="flex gap-2">
                     <button
-                      disabled={singleClass.status === "approved"}
+                      disabled={
+                        singleClass.status === "approved" ||
+                        singleClass.status === "denied"
+                      }
                       onClick={() => handleApproveClass(singleClass._id)}
                       className="btn btn-secondary btn-xs"
                     >
