@@ -6,34 +6,39 @@ const ParallaxImage = () => {
       <Parallax bgImage="https://i.ibb.co/dpqb9MS/b-2.jpg" strength={300}>
         <div style={{ height: 500 }} className="flex items-center">
           <div className="parallax-2 w-1/2"></div>
-          <div className="parallax-1 w-1/2 flex flex-col gap-y-10">
+          <div className="parallax-1 w-1/2 flex flex-col gap-y-10 p-2">
             <h1 className="text-4xl font-extrabold text-gray-600">
-              Intro Class to Enroll
+              Free Intro Class
             </h1>
+            <p>
+              Discover the magic of music in our complimentary introductory
+              class, where we guide you through the melody-rich world, igniting
+              your passion for harmonies.
+            </p>
             <div className="grid grid-flow-col gap-2 text-center auto-cols-max">
               <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
                 <span className="countdown font-mono text-5xl">
-                  <span style={{ "--value": 15 }}></span>
+                  <span style={{ "--value": 12 }}></span>
                 </span>
-                days
+                Months
               </div>
               <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
                 <span className="countdown font-mono text-5xl">
                   <span style={{ "--value": 10 }}></span>
                 </span>
-                hours
+                Days
               </div>
               <div className="time-24 flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
                 <span className="countdown font-mono text-5xl">
                   <span style={{ "--value": 24 }}></span>
                 </span>
-                min
+                hours
               </div>
               <div className="time-28 flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
                 <span className="countdown font-mono text-5xl">
                   <span style={{ "--value": 28 }}></span>
                 </span>
-                sec
+                mins
               </div>
             </div>
             <button

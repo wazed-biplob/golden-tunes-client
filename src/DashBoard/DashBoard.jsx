@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import useUserRole from "../Hooks/useUserRole";
 import { AuthContext } from "../Providers/AuthProviders";
 import { AiOutlineShoppingCart } from "react-icons/ai";
@@ -11,7 +11,9 @@ import { LuLogOut } from "react-icons/lu";
 const DashBoard = () => {
   const [userRole] = useUserRole();
   const { user, logOut } = useContext(AuthContext);
-  const navigate = useNavigate();
+
+  const navigate = useLocation();
+  console.log(navigate.pathname);
   const handleLogOut = () => {
     logOut()
       .then(() => {})
@@ -104,7 +106,10 @@ const DashBoard = () => {
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col items-center justify-center">
-          <h1>Welcome {user?.displayName}</h1>
+          <h1>
+            {navigate.pathname === "/dashboard" &&
+              "Welcome " + user?.displayName}
+          </h1>
           <Outlet />
           <label
             htmlFor="my-drawer-2"
@@ -116,7 +121,7 @@ const DashBoard = () => {
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
 
-          <ul className="menu p-4 w-80 h-full bg-slate-200 bg-base-200 text-base-content">
+          <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
             <li className="flex flex-col items-center">
               <img
                 style={{

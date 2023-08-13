@@ -12,13 +12,13 @@ const Class = () => {
   const navigate = useNavigate();
   const [approvedClasses, setApprovedClasses] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  
+
   useEffect(() => {
     fetch(`https://golden-tunes-server.vercel.app/approved-classes`)
       .then((res) => res.json())
       .then((data) => {
         setApprovedClasses(data);
-        setIsLoading(false)
+        setIsLoading(false);
       });
   }, []);
 
@@ -67,65 +67,77 @@ const Class = () => {
         subheading={`Choose your favorite`}
       />{" "}
       <div className="grid grid-cols-3 gap-4 mt-2 pb-2">
-      {isLoading ? <><p>...loading</p></> :    approvedClasses?.map((singleClass) => (
+        {isLoading ? (
           <>
+            {" "}
             <div
-              style={
-                singleClass.availableSeats === 0
-                  ? { backgroundColor: "red" }
-                  : {}
-              }
-              className="card w-full bg-base-100 shadow-xl"
+              className="flex justify-center items-center"
+              style={{ height: "100vh", width: "100vw" }}
             >
-              <figure className="px-2 pt-2">
-                <img
-                  style={{ height: "300px" }}
-                  src={singleClass.image}
-                  alt={singleClass.className}
-                  className="rounded-xl"
-                />
-              </figure>
-              <div className="card-body items-center text-center">
-                <h2 className="card-title">{singleClass.className}</h2>
-                <div className="flex justify-center items-center gap-x-2">
-                  <FaUserAlt style={{ color: "lightgrey" }} />
-                  <p>{singleClass.instructorName}</p>
-                </div>
-
-                <div className="flex justify-center items-center gap-x-2">
-                  {" "}
-                  <MdEmail />
-                  <p className="font-extrabold">
-                    {singleClass.instructorEmail}
-                  </p>
-                </div>
-                <div className="flex gap-4 justify-center items-center">
-                  <div className="flex items-center gap-x-2">
-                    <FaMoneyCheckAlt style={{ fontSize: "26px" }} />
-                    <p>${singleClass.price}</p>
-                  </div>
-                  <div className="flex items-center gap-x-2">
-                    <MdEventSeat style={{ fontSize: "26px" }} />
-                    <p>Seats : {singleClass.availableSeats}</p>
-                  </div>
-                </div>
-                <div className="card-actions">
-                  <button
-                    onClick={() => handleSelectClass(singleClass._id)}
-                    disabled={
-                      userRole === "instructor" ||
-                      userRole === "admin" ||
-                      singleClass.availableSeats === 0
-                    }
-                    className="btn btn-info text-white"
-                  >
-                    Book to Enroll
-                  </button>
-                </div>
-              </div>
+              <progress className="progress w-56"></progress>
             </div>
           </>
-        ))} 
+        ) : (
+          approvedClasses?.map((singleClass) => (
+            <>
+              <div
+                style={
+                  singleClass.availableSeats === 0
+                    ? { backgroundColor: "red" }
+                    : {}
+                }
+                className="card w-full bg-base-100 shadow-xl"
+              >
+                <figure className="px-2 pt-2">
+                  <img
+                    style={{ height: "300px" }}
+                    src={singleClass.image}
+                    alt={singleClass.className}
+                    className="rounded-xl"
+                  />
+                </figure>
+                <div className="card-body items-center text-center">
+                  <h2 className="card-title">{singleClass.className}</h2>
+                  <div className="flex justify-center items-center gap-x-2">
+                    <FaUserAlt style={{ color: "lightgrey" }} />
+                    <p>{singleClass.instructorName}</p>
+                  </div>
+
+                  <div className="flex justify-center items-center gap-x-2">
+                    {" "}
+                    <MdEmail />
+                    <p className="font-extrabold">
+                      {singleClass.instructorEmail}
+                    </p>
+                  </div>
+                  <div className="flex gap-4 justify-center items-center">
+                    <div className="flex items-center gap-x-2">
+                      <FaMoneyCheckAlt style={{ fontSize: "26px" }} />
+                      <p>${singleClass.price}</p>
+                    </div>
+                    <div className="flex items-center gap-x-2">
+                      <MdEventSeat style={{ fontSize: "26px" }} />
+                      <p>Seats : {singleClass.availableSeats}</p>
+                    </div>
+                  </div>
+                  <div className="card-actions">
+                    <button
+                      onClick={() => handleSelectClass(singleClass._id)}
+                      disabled={
+                        userRole === "instructor" ||
+                        userRole === "admin" ||
+                        singleClass.availableSeats === 0
+                      }
+                      className="btn btn-info text-white"
+                    >
+                      Book to Enroll
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </>
+          ))
+        )}
       </div>
     </>
   );
