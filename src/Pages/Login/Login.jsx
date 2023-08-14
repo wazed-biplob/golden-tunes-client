@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { AiFillEye } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
+import Swal from "sweetalert2";
 const Login = () => {
   const { signIn, googleSignIn } = useContext(AuthContext);
   const [show, setShow] = useState(false);
@@ -49,7 +50,12 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
-        alert(error.message);
+        let errorMsg = error.message;
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: errorMsg,
+        });
       });
   };
   return (

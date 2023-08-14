@@ -5,6 +5,7 @@ import { AuthContext } from "../../Providers/AuthProviders";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FaMoneyCheckAlt, FaUserAlt } from "react-icons/fa";
 import { MdEmail, MdEventSeat } from "react-icons/md";
+import Swal from "sweetalert2";
 
 const Class = () => {
   const { user } = useContext(AuthContext);
@@ -49,9 +50,19 @@ const Class = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data.insertedId) {
-            alert("Class has been Selected Successfully.");
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Class Selected",
+              showConfirmButton: false,
+              timer: 1500,
+            });
           } else {
-            alert("There has been an error.");
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Something went wrong! Try Again Later.",
+            });
           }
         });
     } else {

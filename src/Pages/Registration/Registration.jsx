@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
 import { getAuth, updateProfile } from "firebase/auth";
 import app from "../../Firebase/firebase.config";
+import Swal from "sweetalert2";
 
 const Registration = () => {
   const { createUser, logOut } = useContext(AuthContext);
@@ -43,7 +44,11 @@ const Registration = () => {
             .then((res) => res.json())
             .then((data) => {
               if (data.insertedId) {
-                alert("Signed Up as Students");
+                Swal.fire(
+                  "Success!",
+                  "Signed Up as Students successfully!",
+                  "success"
+                );
               }
             });
         });

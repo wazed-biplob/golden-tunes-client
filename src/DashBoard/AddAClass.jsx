@@ -2,6 +2,7 @@ import { useContext } from "react";
 
 import { AuthContext } from "../Providers/AuthProviders";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const AddAClass = () => {
   const { user } = useContext(AuthContext);
@@ -37,7 +38,11 @@ const AddAClass = () => {
       .then((r) => r.json())
       .then((d) => {
         if (d.insertedId) {
-          alert("Class Has Been Added Successfully.");
+          Swal.fire(
+            "Good job!",
+            "Class Has been added successfully!",
+            "success"
+          );
           form.reset();
           navigate("/dashboard/myclasses");
         }

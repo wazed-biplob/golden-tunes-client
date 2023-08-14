@@ -4,6 +4,7 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { AuthContext } from "../../Providers/AuthProviders";
 import "./Checkout.css";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 const Checkout = ({ singleClass }) => {
   const stripe = useStripe();
   const elements = useElements();
@@ -79,7 +80,7 @@ const Checkout = ({ singleClass }) => {
       AX.post("/payments/", payment).then((res) => {
         console.log(res.data);
         if (res.data.insertResult.insertedId) {
-          alert("Successfully Processed.");
+          Swal.fire("Good job!", "Payment Successful", "success");
 
           fetch(
             `https://golden-tunes-server.vercel.app/class-seat-count/${singleClass?.classId}`,
