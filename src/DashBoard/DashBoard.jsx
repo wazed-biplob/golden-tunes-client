@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link, Outlet, useLocation, useParams } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import useUserRole from "../Hooks/useUserRole";
 import { AuthContext } from "../Providers/AuthProviders";
 import { AiOutlineShoppingCart } from "react-icons/ai";
@@ -8,17 +8,18 @@ import { SiAddthis } from "react-icons/si";
 import { FcGraduationCap } from "react-icons/fc";
 import { RiUserSearchLine } from "react-icons/ri";
 import { LuLogOut } from "react-icons/lu";
+import { getAuth } from "firebase/auth";
+import app from "../Firebase/firebase.config";
 const DashBoard = () => {
   const [userRole] = useUserRole();
   const { user, logOut } = useContext(AuthContext);
-
+  const auth = getAuth(app);
   const navigate = useLocation();
   console.log(navigate.pathname);
   const handleLogOut = () => {
-    logOut()
+    logOut(auth)
       .then(() => {})
       .catch((error) => console.log(error));
-    navigate("/");
   };
   const dashboardLinks = (
     <>
