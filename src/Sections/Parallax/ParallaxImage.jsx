@@ -7,16 +7,22 @@ const ParallaxImage = () => {
         <div
           style={{
             height: 500,
-            backgroundImage: "linear-gradient(to left, white, black)",
+            backgroundImage: "linear-gradient(to left, black, black)",
           }}
           className="flex items-center"
         >
-          <div className="parallax-2 w-1/2"></div>
+          <div className="parallax-2 w-1/2 px-4">
+            <img
+              className=""
+              src="https://i.ibb.co/vzFXb9L/Intro-Class-Image.jpg"
+              alt="picture"
+            />
+          </div>
           <div className="parallax-1 w-1/2 h-[400px] md:h-auto flex flex-col gap-y-10 p-2">
             <h1 className="text-4xl font-extrabold text-gray-600">
               Free Intro Class
             </h1>
-            <p>
+            <p className="px-2">
               Discover the magic of music in our complimentary introductory
               class, where we guide you through the melody-rich world, igniting
               your passion for harmonies.
