@@ -3,10 +3,16 @@ import "./ParallaxImage.css";
 const ParallaxImage = () => {
   return (
     <div>
-      <Parallax bgImage="https://i.ibb.co/dpqb9MS/b-2.jpg" strength={300}>
-        <div style={{ height: 500 }} className="flex items-center">
+      <Parallax strength={300}>
+        <div
+          style={{
+            height: 500,
+            backgroundImage: "linear-gradient(to left, white, black)",
+          }}
+          className="flex items-center"
+        >
           <div className="parallax-2 w-1/2"></div>
-          <div className="parallax-1 w-1/2 flex flex-col gap-y-10 p-2">
+          <div className="parallax-1 w-1/2 h-[400px] md:h-auto flex flex-col gap-y-10 p-2">
             <h1 className="text-4xl font-extrabold text-gray-600">
               Free Intro Class
             </h1>
