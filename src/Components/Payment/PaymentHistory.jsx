@@ -28,7 +28,7 @@ const PaymentHistory = () => {
                   <td>{singleClass.className}</td>
                   <td>{singleClass.instructorEmail}</td>
 
-                  <td>{singleClass.price}</td>
+                  <td>${singleClass.price}</td>
                   <td>{singleClass.transactionId}</td>
                 </tr>
               </>
