@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Fade } from "react-awesome-reveal";
 
 const InstructorCard = ({ instructor }) => {
@@ -5,7 +6,10 @@ const InstructorCard = ({ instructor }) => {
   return (
     <>
       <Fade cascade damping={0.5}>
-        <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12 dark:bg-gray-900 dark:text-gray-100">
+        <div
+          onClick={() => alert("Please, go to Instructor Page")}
+          className="hover:border hover:cursor-pointer flex flex-col justify-center py-4 shadow-md rounded-xl sm:px-12 dark:bg-gray-900 dark:text-gray-100"
+        >
           <img
             src={image}
             alt=""
