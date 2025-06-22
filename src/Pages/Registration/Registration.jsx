@@ -36,6 +36,7 @@ const Registration = () => {
             email: data.email,
             role: "student",
             image: data.photo,
+            password: data.password,
           };
           fetch("https://golden-tunes-server.vercel.app/users", {
             method: "POST",

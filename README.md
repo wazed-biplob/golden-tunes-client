@@ -24,6 +24,8 @@
 - React Icons
 - React Awesome Reveal (animation)
 
+### Credentials
+
 ### Live Web Link
 
 - You may visit the web if you wish.<br>
