@@ -26,6 +26,9 @@
 
 ### Credentials
 
+admin mail : wazed_biplob@gmail.com
+admin password : AsusX550LNi5#2.4
+
 ### Live Web Link
 
 - You may visit the web if you wish.<br>
